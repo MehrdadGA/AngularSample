@@ -3,7 +3,7 @@ import { Injectable } from "@angular/core";
 import { catchError } from "rxjs/operators";
 import { throwError } from 'rxjs';
 
-interface AuthResponseData{
+export interface AuthResponseData{
     kind: string;
     idToken: string;
     email: string;
@@ -32,5 +32,14 @@ export class authService{
             }
             return throwError(errorMessage);
         }));
+    }
+
+    login(email: string, password: string){
+        return this.http.post<AuthResponseData>(
+            '',
+            email: email,
+            password: password,
+            returnSecureToken: true
+        );
     }
 }
