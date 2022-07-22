@@ -44,14 +44,14 @@ export class authService{
             switch(errorRes.error.error.message){
                 case 'EMAIL_EXISTS':
                 errorMessage = 'This email exist already';
+                break;
                 case 'EMAIL_NOT_FOUND':
                     errorMessage = 'this email does not exist';
-                    break;
+                break;
                 case 'INVALID_PASSWORD':
                     errorMessage = 'this password is not correct';
-                    break; 
+                break; 
             }
             return throwError(errorMessage);
         }
     }
-}
