@@ -3,6 +3,8 @@ import { Injectable } from "@angular/core";
 import { catchError, tap } from "rxjs/operators";
 import { pipe, Subject, throwError } from 'rxjs';
 import { user } from "./user.model";
+import { stringify } from "querystring";
+import { ReadStream } from "fs";
 
 export interface AuthResponseData{
     kind: string;
@@ -27,15 +29,12 @@ export class authService{
             returnSecureToken: true
         })
         .pipe(catchError(this.handleError), tap(resData) => {
-            const expirationDate = new Date(
-                new Date().getTime() + +resData.expiresIn * 1000
-            );
-            const user = new User(
+            this.handleAuthentication(
                 resData.email,
                 resData.localId,
                 resData.idToken,
-                expirationDate
-            ) 
+                +resData.expiresIn
+              );
         });
     }
 
@@ -47,8 +46,30 @@ export class authService{
             returnSecureToken: true
             }
         )
-            .pipe(catchError(this.handleError));
+        .pipe(
+            catchError(this.handleError),
+            tap(resData => {
+              this.handleAuthentication(
+                resData.email,
+                resData.localId,
+                resData.idToken,
+                +resData.expiresIn
+              );
+            })
+          );
     }
+
+    private handleAuthentication(
+        email: string,
+        userId: string,
+        token: string,
+        expiresIn: number
+      ) {
+        const expirationDate = new Date(new Date().getTime() + expiresIn * 1000);
+        const user = new User(email, userId, token, expirationDate);
+        this.user.next(user);
+      }
+    
 
     private handleError(errorRes: HttpErrorResponse){
         let errorMessage = 'An error occured';
