@@ -1,6 +1,7 @@
 import { Component } from "@angular/core";
 import { tick } from "@angular/core/testing";
 import { NgForm } from "@angular/forms";
+import { Router } from "@angular/router";
 import { error } from "console";
 import { Observable } from "rxjs";
 import { AuthResponseData, authService } from "./auth.service";
@@ -16,7 +17,7 @@ export class AuthComponent {
     error: string = null;
     
 
-    constructor(private authService: authService){}
+    constructor(private authService: authService, private router: Router){}
 
     onSwitchMode(){
         this.isLoginMode = !this.isLoginMode;
