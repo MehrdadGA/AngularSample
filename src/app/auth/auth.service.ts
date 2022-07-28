@@ -2,9 +2,7 @@ import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { catchError, tap } from "rxjs/operators";
 import { pipe, Subject, throwError } from 'rxjs';
-import { user } from "./user.model";
-import { stringify } from "querystring";
-import { ReadStream } from "fs";
+import { user, user } from "./user.model";
 
 export interface AuthResponseData{
     kind: string;

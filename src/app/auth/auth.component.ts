@@ -14,7 +14,7 @@ import { AuthResponseData, authService } from "./auth.service";
 export class AuthComponent {
     isLoginMode = true;
     isLoading = false;
-    error: string = null;
+    error = null;
     
 
     constructor(private authService: authService, private router: Router){}
