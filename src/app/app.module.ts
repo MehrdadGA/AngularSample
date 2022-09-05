@@ -26,7 +26,7 @@ import { PlaceholderDirective } from './Shared/placeholder/placeholder.directive
 
 @NgModule({
   declarations: [
-    AppComponent,
+    //AppComponent,
     HeaderComponent,
     RecipesComponent,
     RecipeListComponent,
