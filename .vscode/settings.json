@@ -1,0 +1,4 @@
+{
+    "git.postCommitCommand": "sync",
+    "github-enterprise.uri": "https://github.com/MehrdadGA"
+}
