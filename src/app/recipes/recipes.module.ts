@@ -7,8 +7,8 @@ import { NgModule } from "../shopping-list/app-routing.module";
     RecipeDetailComponent,
     RecipeItemComponent,
     RecipeStartComponent,
-    RecipeEditComponent
-    
+    RecipeEditComponent,
+    RecipeModule
     ]
 })
 export class RecipeModule{}
