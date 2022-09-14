@@ -1,3 +1,5 @@
+import { NgModule } from '@angular/core';
+import {RouterModule} from '@angular/router';
 import { NgModule } from "../shopping-list/app-routing.module";
 import { RecipeDetailComponent } from "./recipe-detail/recipe-detail.component";
 import { RecipeEditComponent } from "./recipe-edit/recipe-edit.component";
@@ -15,6 +17,7 @@ import { RecipesComponent } from "./recipes.component";
     RecipeStartComponent,
     RecipeEditComponent
     ],
+    imports: [RouterModule],
     exports: [
     RecipesComponent,
     RecipeListComponent,
