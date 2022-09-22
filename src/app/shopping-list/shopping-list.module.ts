@@ -19,4 +19,6 @@ import { ShoppingEditComponent } from "./shopping-edit/shopping-edit.component";
     ]
 })
 
-export class ShoppingListModule{}
+export class ShoppingListModule{
+    
+}
